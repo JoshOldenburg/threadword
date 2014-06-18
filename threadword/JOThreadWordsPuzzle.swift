@@ -30,57 +30,10 @@ class JOThreadWordsPuzzle {
 			ret.append(results.filter({ return self._isWord($0) }))
 		}
 		
-		func _comment() {
-			/*
-			exports.solveThreadWord = function(level) {
-			if (!level) return false;
-			var lines = _.filter(level.split('\n'), function(item) { return item && item.length != 0; });
-			if (!lines) return false;
-			var length = _lineLength(lines);
-			if (!length) return false;
-			var columns = _getColumns(lines);
-			var height = _lineLength(columns);
-			if (!length) return false;
-			var ret = [];
-			
-			function _findContiguous(col, idx) {
-			return _.chain([
-			idx - 1,
-			idx,
-			idx + 1,
-			]).filter(function(index) {
-			return index >= 0 && index < height;
-			}).map(function(index) {
-			var char = columns[col + 1][index];
-			if (col == length - 2) return [char];
-			else return _.map(_findContiguous(col + 1, index), function(item) {
-			return char + item;
-			});
-			}).flatten().value();
-			}
-			
-			for (var i = 0; i < height; i++) {
-			var results = _findContiguous(0, i);
-			results = _.chain(results).map(function(item) {
-			return columns[0][i] + item;
-			}).filter(function(item) {
-			return exports.checkToDictionary(item);
-			}).value();
-			ret.push(results);
-			}
-			
-			return _.flatten(ret);
-			}
-			
-			
-			*/
-		}
-		
 		return JOFlatten(ret) as String[]
 	}
 	
 	func _findContiguous(col: Int, idx: Int) -> String[] {
-//		println("-> _findContiguous(col: \(col), idx: \(idx))")
 		var indexes = [
 			idx - 1,
 			idx,
@@ -89,27 +42,15 @@ class JOThreadWordsPuzzle {
 		indexes = indexes.filter({ return $0 >= 0 && $0 < self.height })
 		var result = String[]()
 		for index in indexes {
-//			println(" - _findContiguous(col: \(col), idx: \(idx)) \(index)")
 			let newCol = col + 1
 			let char = self.columns[newCol][index]
 			if (self.width - 1 == newCol) {
 				result += char
 			} else {
-//				println(" - calling _findContiguous(col: \(newCol), idx: \(index))")
 				let contiguous = self._findContiguous(newCol, idx: index)
 				result += contiguous.map({ return char + $0 })
 			}
 		}
-//		let result = indexes.map({ (index: Int) -> String[] in
-//			let char = self.columns[col + 1][index]
-//			if (col == self.width - 2) {
-//				return ["💩"]
-//			} else {
-//				let contiguous = self._findContiguous(col + 1, idx: index)
-//				return contiguous.map({ return char + $0 })
-//			}
-//		})
-//		println("<- _findContiguous(col: \(col), idx: \(idx))")
 		return JOFlatten(result) as String[]
 	}
 
@@ -139,7 +80,6 @@ class JOThreadWordsPuzzle {
 	}
 	
 	func _isWord(word: String) -> Bool {
-//		return true
 		return JOUtil.isWord(word)
 	}
 }

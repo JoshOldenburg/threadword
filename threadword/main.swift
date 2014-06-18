@@ -8,17 +8,32 @@
 
 import Foundation
 
+/*let parser = GBCommandLineParser()
+parser.registerOption("prefix", shortcut: 112 /* p */, requirement: GBValueRequired)
+parser.registerOption("file", shortcut: 102 /* f */, requirement: GBValueRequired)
+
+parser.parseOptionsUsingDefaultArgumentsWithBlock({ // (flags: GBParseFlags, argument: String, value: AnyObject, stop) 
+	return
+}()) */
+
 let puzzle = JOThreadWordsPuzzle(level: [
 /*	"malgmrt",
 	"corveos",
 	"sunnisn",
 	"trtdrng",
 	"fausged",*/
-	"toeing",
+/*	"toeing",
 	"ritlws",
 	"vabted",
 	"sooiae",
-	"hcrubs",
+	"hcrubs",*/
+	"pepries",
+	"dorohod",
+	"tancsnt",
+	"supaees",
+	"ctrryrd",
 ])
 
-println(puzzle.solve().description)
+let solution = puzzle.solve()
+println(solution.description)
+println(solution.count)

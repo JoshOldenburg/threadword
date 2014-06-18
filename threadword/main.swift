@@ -8,5 +8,17 @@
 
 import Foundation
 
-println("Hello, World!")
+let puzzle = JOThreadWordsPuzzle(level: [
+/*	"malgmrt",
+	"corveos",
+	"sunnisn",
+	"trtdrng",
+	"fausged",*/
+	"toeing",
+	"ritlws",
+	"vabted",
+	"sooiae",
+	"hcrubs",
+])
 
+println(puzzle.solve().description)

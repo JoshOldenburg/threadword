@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0349A8EF1952102B00927EDD /* JOUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349A8EE1952102B00927EDD /* JOUtil.m */; };
 		03E062531951E68100B5C50C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E062521951E68100B5C50C /* main.swift */; };
+		03E0625E1951E9C200B5C50C /* JOThreadWordsPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E0625D1951E9C200B5C50C /* JOThreadWordsPuzzle.swift */; };
+		D59E840DF7ED4E9FAAFA92A7 /* libPods-threadword.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DABF6C2772FC4E60B11831AF /* libPods-threadword.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0349A8ED1952102B00927EDD /* JOUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOUtil.h; sourceTree = "<group>"; };
+		0349A8EE1952102B00927EDD /* JOUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOUtil.m; sourceTree = "<group>"; };
 		03E0624F1951E68100B5C50C /* threadword */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = threadword; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E062521951E68100B5C50C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		03E062591951E84D00B5C50C /* threadword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "threadword-Bridging-Header.h"; sourceTree = "<group>"; };
+		03E0625D1951E9C200B5C50C /* JOThreadWordsPuzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOThreadWordsPuzzle.swift; sourceTree = "<group>"; };
+		03E0625F1951F0A400B5C50C /* threadword.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = threadword.playground; sourceTree = "<group>"; };
+		B2324B8C73EB4859B6548F32 /* Pods-threadword.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-threadword.xcconfig"; path = "Pods/Pods-threadword.xcconfig"; sourceTree = "<group>"; };
+		DABF6C2772FC4E60B11831AF /* libPods-threadword.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-threadword.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D59E840DF7ED4E9FAAFA92A7 /* libPods-threadword.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +54,8 @@
 			children = (
 				03E062511951E68100B5C50C /* threadword */,
 				03E062501951E68100B5C50C /* Products */,
+				B2324B8C73EB4859B6548F32 /* Pods-threadword.xcconfig */,
+				274BA0E85A8B4ED7B7469170 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +71,21 @@
 			isa = PBXGroup;
 			children = (
 				03E062521951E68100B5C50C /* main.swift */,
+				03E0625D1951E9C200B5C50C /* JOThreadWordsPuzzle.swift */,
+				0349A8ED1952102B00927EDD /* JOUtil.h */,
+				0349A8EE1952102B00927EDD /* JOUtil.m */,
+				03E062591951E84D00B5C50C /* threadword-Bridging-Header.h */,
+				03E0625F1951F0A400B5C50C /* threadword.playground */,
 			);
 			path = threadword;
+			sourceTree = "<group>";
+		};
+		274BA0E85A8B4ED7B7469170 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DABF6C2772FC4E60B11831AF /* libPods-threadword.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -69,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03E062561951E68100B5C50C /* Build configuration list for PBXNativeTarget "threadword" */;
 			buildPhases = (
+				2E220B69FF894AE38B2B5320 /* Check Pods Manifest.lock */,
 				03E0624B1951E68100B5C50C /* Sources */,
 				03E0624C1951E68100B5C50C /* Frameworks */,
 				03E0624D1951E68100B5C50C /* CopyFiles */,
+				B42C11CAB7E74F4D8B954A83 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -113,12 +141,47 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E220B69FF894AE38B2B5320 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B42C11CAB7E74F4D8B954A83 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-threadword-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		03E0624B1951E68100B5C50C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E0625E1951E9C200B5C50C /* JOThreadWordsPuzzle.swift in Sources */,
 				03E062531951E68100B5C50C /* main.swift in Sources */,
+				0349A8EF1952102B00927EDD /* JOUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,15 +265,24 @@
 		};
 		03E062571951E68100B5C50C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2324B8C73EB4859B6548F32 /* Pods-threadword.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "threadword/threadword-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		03E062581951E68100B5C50C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2324B8C73EB4859B6548F32 /* Pods-threadword.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "threadword/threadword-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -233,6 +305,7 @@
 				03E062581951E68100B5C50C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

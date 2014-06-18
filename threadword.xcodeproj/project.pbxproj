@@ -32,7 +32,6 @@
 		03E062521951E68100B5C50C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		03E062591951E84D00B5C50C /* threadword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "threadword-Bridging-Header.h"; sourceTree = "<group>"; };
 		03E0625D1951E9C200B5C50C /* JOThreadWordsPuzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOThreadWordsPuzzle.swift; sourceTree = "<group>"; };
-		03E0625F1951F0A400B5C50C /* threadword.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = threadword.playground; sourceTree = "<group>"; };
 		B2324B8C73EB4859B6548F32 /* Pods-threadword.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-threadword.xcconfig"; path = "Pods/Pods-threadword.xcconfig"; sourceTree = "<group>"; };
 		DABF6C2772FC4E60B11831AF /* libPods-threadword.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-threadword.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -75,7 +74,6 @@
 				0349A8ED1952102B00927EDD /* JOUtil.h */,
 				0349A8EE1952102B00927EDD /* JOUtil.m */,
 				03E062591951E84D00B5C50C /* threadword-Bridging-Header.h */,
-				03E0625F1951F0A400B5C50C /* threadword.playground */,
 			);
 			path = threadword;
 			sourceTree = "<group>";

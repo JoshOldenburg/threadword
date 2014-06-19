@@ -20,6 +20,8 @@ class JOThreadWordsPuzzle {
 		columns = self._getColumns(lines)
 		width = self._lineLength(lines)
 		height = self._lineLength(columns)
+		assert(width > 0, "The lines must have the same number of letters!");
+		assert(height > 0 , "The lines must have the same number of letters!");
 	}
 	
 	func solve() -> Array<String> {

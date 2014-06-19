@@ -23,13 +23,17 @@ class JOThreadWordsPuzzle {
 		assert(width > 0, "The lines must have the same number of letters!");
 		assert(height > 0 , "The lines must have the same number of letters!");
 	}
-	
+
 	func solve() -> Array<String> {
+		return self.solve(JOUtil.isWord)
+	}
+
+	func solve(isWord: String -> Bool) -> Array<String> {
 		var ret = Array<Array<String>>();
 		
 		for var idx = 0; idx < height; idx++ {
 			let results: String[] = _findContiguous(0, idx: idx).map({ return self.columns[0][idx] + $0 })
-			ret.append(results.filter({ return self._isWord($0) }))
+			ret.append(results.filter(isWord))
 		}
 		
 		return JOFlatten(ret) as String[]
@@ -79,10 +83,6 @@ class JOThreadWordsPuzzle {
 		} else {
 			return lengths[0]
 		}
-	}
-	
-	func _isWord(word: String) -> Bool {
-		return JOUtil.isWord(word)
 	}
 }
 

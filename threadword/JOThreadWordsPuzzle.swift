@@ -9,13 +9,13 @@
 import Foundation
 
 class JOThreadWordsPuzzle {
-	let lines: Array<String>
+	let lines: Array<String> = []
 	let columns: Array<String> = []
 	let width: Int = 0
 	let height: Int = 0
 
 	init(level: Array<String>) {
-		lines = level.filter({ return countElements($0) > 0 })
+		lines = JOThreadWordsPuzzle._filterNotEmpty(level)
 		assert(lines.count > 0, "The level must have letters!")
 		columns = self._getColumns(lines)
 		width = self._lineLength(lines)
@@ -25,15 +25,12 @@ class JOThreadWordsPuzzle {
 	}
 
 	func solve() -> Array<String> {
-		return self.solve(JOUtil.isWord)
-	}
-
-	func solve(isWord: String -> Bool) -> Array<String> {
 		var ret = Array<Array<String>>();
 		
 		for var idx = 0; idx < height; idx++ {
-			let results: String[] = _findContiguous(0, idx: idx).map({ return self.columns[0][idx] + $0 })
-			ret.append(results.filter(isWord))
+			var results: String[] = _findContiguous(0, idx: idx).map() { return self.columns[0][idx] + $0 }
+//			results = results.filter() { return isWord($0) }
+			ret.append(results)
 		}
 		
 		return JOFlatten(ret) as String[]
@@ -83,6 +80,11 @@ class JOThreadWordsPuzzle {
 		} else {
 			return lengths[0]
 		}
+	}
+
+	class func _filterNotEmpty(arr: String[]) -> String[] {
+		return arr.filter() { countElements($0) > 0 }
+//		return arr
 	}
 }
 

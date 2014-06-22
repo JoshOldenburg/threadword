@@ -23,7 +23,12 @@ func _parseOption(flags: GBParseFlags, argument: String?, value: AnyObject?, sto
 //		if let strValue: NSString = value! as? NSString {
 //			lines.append(String(strValue))
 //		}
-		lines += String((value! as NSString).copy() as NSString)
+//		lines += String((value! as NSString).copy() as NSString)
+		if let strValue: String = value? as? NSString {
+			if (countElements(strValue) > 0) {
+				lines += strValue
+			}
+		}
 	case GBParseFlagMissingValue:
 		println("Error: option \(argument) requires a value")
 		exit(2)
@@ -45,13 +50,25 @@ for line in lines {
 
 let puzzle = JOThreadWordsPuzzle(level: lines)
 
+let allWords = puzzle.solve()
 var solution: String[]
 if options["file"] || options["prefix"] {
-	solution = puzzle.solve({ return $0 == "" })
+//	solution = allWords.filter() { word -> Bool in
+//		if let prefix: String = options["prefix"] as String {
+//			if word.
+//			return false
+//		}
+
+
+//		return true
+//	}
+	solution = allWords
 } else {
-	solution = puzzle.solve()
+	solution = allWords.filter() { JOUtil.isWord($0) }
+//	solution = allWords.filter() { $0.bridgeToObjectiveC().hasPrefix("o") && $0.bridgeToObjectiveC().hasSuffix("s") }
 }
-println(lines.description)
-println(lines[0])
-println(solution.description)
-println(solution.count)
+//println(lines.description)
+//println(lines[0])
+println("All words, by location: \(solution.description)")
+println("All words, alphabetically: \(sort(solution) { $0 < $1 })")
+println("\(solution.count) solutions found")

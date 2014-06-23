@@ -29,7 +29,6 @@ class JOThreadWordsPuzzle {
 		
 		for var idx = 0; idx < height; idx++ {
 			var results: String[] = _findContiguous(0, idx: idx).map() { return self.columns[0][idx] + $0 }
-//			results = results.filter() { return isWord($0) }
 			ret.append(results)
 		}
 		
@@ -84,7 +83,6 @@ class JOThreadWordsPuzzle {
 
 	class func _filterNotEmpty(arr: String[]) -> String[] {
 		return arr.filter() { countElements($0) > 0 }
-//		return arr
 	}
 }
 

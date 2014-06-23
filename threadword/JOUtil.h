@@ -12,5 +12,7 @@
 @interface JOUtil : NSObject
 
 + (BOOL)isWord:(NSString *)word;
++ (NSUInteger)binarySearchArray:(NSArray *)array forObject:(id)object;
++ (BOOL)isFound:(NSUInteger)idx; // != NSNotFound
 
 @end

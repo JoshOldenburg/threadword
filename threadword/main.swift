@@ -10,7 +10,7 @@ import Foundation
 
 let parser = GBCommandLineParser()
 parser.registerOption("prefix", shortcut: 112 /* p */, requirement: GBValueRequired)
-parser.registerOption("file", shortcut: 102 /* f */, requirement: GBValueRequired)
+//parser.registerOption("file", shortcut: 102 /* f */, requirement: GBValueRequired)
 
 var options = Dictionary<String, AnyObject>()
 var lines = Array<String>()
@@ -20,10 +20,6 @@ func _parseOption(flags: GBParseFlags, argument: String?, value: AnyObject?, sto
 	case GBParseFlagOption:
 		options[argument!] = value
 	case GBParseFlagArgument:
-//		if let strValue: NSString = value! as? NSString {
-//			lines.append(String(strValue))
-//		}
-//		lines += String((value! as NSString).copy() as NSString)
 		if let strValue: String = value? as? NSString {
 			if (countElements(strValue) > 0) {
 				lines += strValue
@@ -52,23 +48,36 @@ let puzzle = JOThreadWordsPuzzle(level: lines)
 
 let allWords = puzzle.solve()
 var solution: String[]
-if options["file"] || options["prefix"] {
-//	solution = allWords.filter() { word -> Bool in
-//		if let prefix: String = options["prefix"] as String {
-//			if word.
-//			return false
-//		}
+let prefix: String? = options["prefix"]? as? String
+let filePath: String? = options["file"]? as? String
+var fileWords: String[]
 
+/*if filePath != nil {
+	let fileData: String? = NSString.stringWithContentsOfFile(filePath) as? String
+	if fileData == nil {
+		println("The specified file did not exist!")
+		exit(3)
+	} else {
+		fileWords = fileData!.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+	}
+}*/
 
-//		return true
-//	}
-	solution = allWords
+if prefix != nil || filePath != nil {
+	solution = allWords.filter() { word -> Bool in
+		if prefix != nil && !word.bridgeToObjectiveC().hasPrefix(prefix) {
+			return false
+		}
+
+		// Never runs, is disabled
+		if fileWords != nil && JOUtil.isFound(JOUtil.binarySearchArray(fileWords, forObject:word)) {
+			return false
+		}
+
+		return true
+	}
 } else {
 	solution = allWords.filter() { JOUtil.isWord($0) }
-//	solution = allWords.filter() { $0.bridgeToObjectiveC().hasPrefix("o") && $0.bridgeToObjectiveC().hasSuffix("s") }
 }
-//println(lines.description)
-//println(lines[0])
 println("All words, by location: \(solution.description)")
 println("All words, alphabetically: \(sort(solution) { $0 < $1 })")
 println("\(solution.count) solutions found")

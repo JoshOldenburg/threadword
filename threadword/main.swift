@@ -11,6 +11,7 @@ import Foundation
 let parser = GBCommandLineParser()
 parser.registerOption("prefix", shortcut: 112 /* p */, requirement: GBValueRequired)
 //parser.registerOption("file", shortcut: 102 /* f */, requirement: GBValueRequired)
+parser.registerOption("all", shortcut: 61 /* a */, requirement: GBValueNone)
 
 var options = Dictionary<String, AnyObject>()
 var lines = Array<String>()
@@ -39,6 +40,11 @@ func _parseOption(flags: GBParseFlags, argument: String?, value: AnyObject?, sto
 
 parser.parseOptionsUsingDefaultArgumentsWithBlock(_parseOption)
 
+if lines.count <= 1 {
+	println("Error: you must give a puzzle to solve!")
+	exit(2)
+}
+
 println("Solving puzzle:")
 for line in lines {
 	println(" \(line)")
@@ -49,6 +55,7 @@ let puzzle = JOThreadWordsPuzzle(level: lines)
 let allWords = puzzle.solve()
 var solution: String[]
 let prefix: String? = options["prefix"]? as? String
+let showAllWords: Bool = (options["all"] != nil)
 let filePath: String? = options["file"]? as? String
 var fileWords: String[]
 
@@ -62,14 +69,16 @@ var fileWords: String[]
 	}
 }*/
 
-if prefix != nil || filePath != nil {
+if showAllWords { // --all
+	solution = allWords
+} else if prefix != nil || filePath != nil { // --prefix and/or --file
 	solution = allWords.filter() { word -> Bool in
 		if prefix != nil && !word.bridgeToObjectiveC().hasPrefix(prefix) {
 			return false
 		}
 
 		// Never runs, is disabled
-		if fileWords != nil && JOUtil.isFound(JOUtil.binarySearchArray(fileWords, forObject:word)) {
+		if fileWords != nil && !JOUtil.isFound(JOUtil.binarySearchArray(fileWords, forObject:word)) {
 			return false
 		}
 
